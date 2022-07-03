@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+	<!-- 将日志信息输出到控制台 -->
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%t] %C.%M(%L) | %m%n" />
+		</layout>
+	</appender>
+	<!-- 将日志信息输出到文件，但是当文件的大小达到某个阈值的时候，日志文件会自动回滚 -->
+	<appender name="RollingFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="maxFileSize" value="20MB" />
+		<param name="maxBackupIndex" value="10" />
+		<param name="file" value="E:/app/logs.log" />
+		<!-- 设置日志输出的样式 -->
+		<layout class="org.apache.log4j.PatternLayout">
+		<!-- 设置日志输出的格式 -->
+			<param name="conversionPattern" value="%d %p [%t] %C.%M(%L) | %m%n" />
+		</layout>
+	</appender>
+	<!-- INFO DEBUG -->
+	<!-- 根logger的设置-->
+	<root>
+		<level value="ERROR"/>
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="RollingFile"/>
+	</root>
+
+</log4j:configuration>

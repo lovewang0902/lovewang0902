@@ -1,0 +1,16 @@
+
+
+#测试访问地址,可以查询的到数据
+http://localhost:8089/showStudent/1
+#测试成功，返回数据
+Student(studentName=xiaotutu, studentAge=21, studentSex=男, studentAddress=深圳龙华区观澜新田)
+
+#
+http://localhost:8089/findStudentByNmae/xiaotutu
+[{"id":1,"studentName":"xiaotutu","studentAge":21,"studentSex":"男","studentAddress":"深圳龙华区观澜新田","createTime":null},{"id":2,"studentName":"xiaotutu1","studentAge":22,"studentSex":"女","studentAddress":"深圳龙华区观澜新田1","createTime":null},{"id":3,"studentName":"xiaotutu2","studentAge":23,"studentSex":"男","studentAddress":"深圳龙华区观澜新田2","createTime":null},{"id":4,"studentName":"xiaotutu3","studentAge":24,"studentSex":"女","studentAddress":"深圳龙华区观澜新田3","createTime":null},{"id":5,"studentName":"xiaotutu4","studentAge":25,"studentSex":"男","studentAddress":"深圳龙华区观澜新田4","createTime":null}]
+
+#
+http://localhost:8089/findAllStudent
+
+
+

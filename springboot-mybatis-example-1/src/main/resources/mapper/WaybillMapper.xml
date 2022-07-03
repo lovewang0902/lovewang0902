@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.example.mapper.WaybillMapper"> <!-- 注意，因为这边没有用到mapper接口，所以这里的namespace不需要是完全的类名 -->
+	<!-- 查询所有学生信息 -->
+	<select id="findAllWaybillNo" resultType="WaybillNo">
+		select * from ts_waybiilno order by createTime DESC;
+	</select>
+
+	<!-- 通过id查询 -->
+	<select id="selectWaybillNo" parameterType="int"
+		resultType="WaybillNo">
+		select *
+		from ts_waybiilno where id=#{id}
+	</select>
+	<!-- 按参数查询模糊匹配 -->
+	<select id="selectWaybillNoByParams" parameterType="Map" resultType="WaybillNo">
+	select * from ts_waybiilno where 1 = 1
+	<!-- <if test="params.waybillNo !=null and params.waybillNo.trim() != ''"> 
+		and waybillNo like CONCAT(CONCAT('%',#{params.waybillNo}),'%')</if>       
+		  <if test="params.label !=null and params.label.trim() != ''"> and label 
+		like CONCAT(CONCAT('%',#{params.label}),'%') </if> -->
+	<if test="params.waybillNo !=null and params.waybillNo.trim() != ''">
+		AND CONCAT(waybillNo) LIKE CONCAT('%',#{params.waybillNo},'%')
+	</if>
+	<if test="params.label !=null and params.label.trim() != ''">
+		AND CONCAT(label) LIKE CONCAT('%',#{params.label},'%')
+	</if>
+	order by createTime DESC
+</select>
+
+	<!--保存运单 -->
+	<insert id="saveWaybillNo" parameterType="WaybillNo">
+		<!--配置插入操作后,获取插入数据的id -->
+		<selectKey keyProperty="id" keyColumn="id" resultType="int"
+			order="AFTER">
+			select last_insert_id();
+		</selectKey>
+		insert into
+		ts_waybiilno(waybillNo,count,waybillFormat,label,createTime)
+		values(#{waybillNo},#{count},#{waybillFormat},#{label},#{createTime});
+	</insert>
+
+</mapper>

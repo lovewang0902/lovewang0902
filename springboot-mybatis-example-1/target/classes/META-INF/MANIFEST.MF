@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: springboot-mybatis-example-1
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: 01415022
+Implementation-Vendor-Id: com.mybatis.example
+Build-Jdk: 1.8.0_45
+Implementation-URL: http://maven.apache.org
+Created-By: Maven Integration for Eclipse
+
